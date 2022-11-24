@@ -9,7 +9,13 @@
 
 <body>
 	<?php
-
+		include "funciones.php";
+		if (isset($_POST['']))
+		{
+			$filename = "miembros.json";
+			$data = file_get_contents($filename);
+			$data = json_encode($data);
+		}
 
 	?>
 	<div class="container">
