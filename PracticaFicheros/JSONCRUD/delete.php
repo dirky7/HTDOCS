@@ -11,4 +11,4 @@
 	file_put_contents("miembros.json", $data);
 	header("Location:index.php");
 
-?>
+?> 

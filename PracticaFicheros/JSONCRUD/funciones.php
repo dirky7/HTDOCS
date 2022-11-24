@@ -37,7 +37,7 @@ function visualizarTablaJSON(){
 			echo "<td>" . $miembro['creado'] . "</td>";
 			echo "<td>" . $miembro['estado'] . "</td>";
 			echo "<td>
-				<a href='' style='margin-left: 10px;' class='btn btn-success pull-right'>Borrar</a>
+				<a href='delete.php?edit_id=$i' style='margin-left: 10px;' class='btn btn-success pull-right'>Borrar</a>
 				<a href='update.php?edit_id=$i' class='btn btn-success pull-right'>Actualizar</a>
 			</td>";
 			echo "</tr>";

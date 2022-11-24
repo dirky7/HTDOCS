@@ -10,11 +10,33 @@
 <body>
 	<?php
 		include "funciones.php";
-		if (isset($_POST['']))
+		
+		$filename = "miembros.json";
+		if (isset($_POST['btnadd']))
 		{
-			$filename = "miembros.json";
 			$data = file_get_contents($filename);
-			$data = json_encode($data);
+			$data = json_decode($data, true);
+
+			$add_array = array(
+				'id' => $_POST['txtid'],
+				'nombre' => $_POST['txtnombre'],
+				'email' => $_POST['txtemail'],
+				'telefono' => $_POST['txtelefono'],
+				'creado' => $_POST['txtfecha'],
+				'estado' => $_POST['txtestado']
+			);
+		}
+
+		if (buscar_id($data, $_POST['txtid']))
+		{
+			$data[] = $add_array;
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			file_put_contents($filename, $data);
+			header("Location:index.html");
+		}
+		else
+		{
+			echo "id repetido";
 		}
 
 	?>
@@ -44,7 +66,7 @@
 								<td><input type="text" name="txtelefono"> </td>
 								<td><input type="datetime-local" name="txtFecha"> </td>
 								<td>
-									<select name="textestado">
+									<select name="txtestado">
 										<option value="1">Activo</option>
 										<option value="0" selected>Inactivo</option>
 									</select>
