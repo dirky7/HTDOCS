@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./bootstrap.min.css">
+	<style>
+		body {
+			margin: 5%;
+		}
+		header {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+	<title>Document</title>
+</head>
+<body>
+	<header>
+		<h1>
+			Funciones 6 - Index
+		</h1>
+	</header>
+	<p>
+		<form action="./resultado_operaciones.php" method="get">
+			<div class="form-group">
+				<label for="n1">Numero 1: </label>
+				<input type="text" name="n1" id="n1">
+			</div>
+			<div class="form-group">
+				<label for="n2">Numero 2: </label>
+				<input type="text" name="n2" id="n2">
+			</div>
+			<p>
+				<div class="radio">
+					<input type="radio" name="op" value="suma" id="suma">
+					<label for="suma">Suma</label>
+				</div>
+				<div class="radio">
+					<input type="radio" name="op" value="resta" id="resta">
+					<label for="resta">Resta</label>
+				</div>
+			</p>
+			<div class="checkbox">
+				<input type="checkbox" name="factorial" id="factorial">
+				<label for="factorial">Factorial</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" name="multiplicar" id="multiplicar">
+				<label for="multiplicar">Tabla de multiplicar</label>
+			</div>
+			<p>
+				<select name="mayormenor" class="form-control">
+					<option value="mayor">Mayor</option>
+					<option value="menor">Menor</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" name="operaciones" value="Enviar" class="btn-default">
+			</p>
+		</form>
+	</p>
+</body>
+</html>

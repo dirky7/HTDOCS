@@ -1,0 +1,17 @@
+[
+    {
+        "id": null,
+        "first_name": "Jose",
+        "last_name": "Martinez",
+        "address": "Madrid",
+        "email": "correodejose@dominio.com",
+        "mobile": "91000012"
+    },
+    {
+        "first_name": "Ramon",
+        "last_name": "Ramirez",
+        "address": "Sevilla",
+        "email": "ramon@gmail.com",
+        "mobile": "678678678"
+    }
+]

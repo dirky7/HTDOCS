@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p>
+		<form action="./resultado_operaciones.php" method="get">
+			<p>
+				<label for="n1">Numero 1: </label>
+				<input type="text" name="n1" id="n1">
+			</p>
+			<p>
+				<label for="n2">Numero 2: </label>
+				<input type="text" name="n2" id="n2">
+			</p>
+			<p>
+				<p>
+					<input type="radio" name="op" id="suma">
+					<label for="suma">Suma</label>
+				</p>
+				<p>
+					<input type="radio" name="op" id="resta">
+					<label for="resta">Resta</label>
+				</p>
+			</p>
+			<p>
+				<input type="checkbox" name="factorial" id="factorial">
+				<label for="factorial">Factorial</label>
+			</p>
+			<p>
+				<input type="checkbox" name="multiplicar" id="multiplicar">
+				<label for="multiplicar">Tabla de multiplicar</label>
+			</p>
+			<p>
+				<select name="mayormenor">
+					<option value="mayor">Mayor</option>
+					<option value="menor">Menor</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" name="operaciones" value="sumar">
+			</p>
+		</form>
+	</p>
+</body>
+</html>

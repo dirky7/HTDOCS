@@ -1,0 +1,57 @@
+[
+  {
+    "id_product": 87,
+    "name": "Mejor precio garantizado",
+    "description": "Ofrece a tus clientes la posibilidad de informarte sobre los precios de la competencia.",
+    "reference": "mpg",
+    "price": 40.00,
+    "category": "Front Office",
+    "manufacturer": "Jose Aguilar",
+    "active": 1,
+    "url": "http://www.jose-aguilar.com/modulos-prestashop/87-mejor-precio-garantizado.html"
+  },
+  {
+    "id_product": 68,
+    "name": "CSV Specific Prices",
+    "description": "Exporta e importa los precios en oferta o los precios específicos de tu tienda.",
+    "reference": "csvspecificprice",
+    "price": 30.00,
+    "category": "Importación y Exportación",
+    "manufacturer": "Jose Aguilar",
+    "active": 1,
+    "url": "http://www.jose-aguilar.com/modulos-prestashop/68-csv-specific-prices.html"
+  },
+  {
+    "id_product": 59,
+    "name": "Block Search Suggestions",
+    "description": "Realiza búsquedas avanzadas con sugerencias de productos con imagen...",
+    "reference": "searchsuggestions",
+    "price": 30.00,
+    "category": "Búsqueda y Filtros",
+    "manufacturer": "Jose Aguilar",
+    "active": 1,
+    "url": "http://www.jose-aguilar.com/modulos-prestashop/59-block-search-suggestions.html"
+  },
+  {
+    "id_product": 94,
+    "name": "Gestión de productos descargables",
+    "description": "Controla y administra todos los productos descargables de tu tienda.",
+    "reference": "mvirtualproducts",
+    "price": 40.00,
+    "category": "Back Office",
+    "manufacturer": "Jose Aguilar",
+    "active": 1,
+    "url": "http://www.jose-aguilar.com/modulos-prestashop/94-gestion-de-productos-descargables.html"
+  },
+  {
+    "id_product": 91,
+    "name": "Wordpress en Prestashop",
+    "description": "Integra Wordpress en tu Prestashop mostrando entradas en una de las columnas de tu tienda.",
+    "reference": "wpintops",
+    "price": 40.00,
+    "category": "Publicidad y Marketing",
+    "manufacturer": "Jose Aguilar",
+    "active": 1,
+    "url": "http://www.jose-aguilar.com/modulos-prestashop/91-wordpress-en-prestashop.html"
+  }
+]
