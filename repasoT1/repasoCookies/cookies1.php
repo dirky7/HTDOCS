@@ -8,9 +8,10 @@
 </head>
 <body>
 	<?php
-		if (isset($_POST['reboot']))
+		if (isset($_POST['reiniciar']))
 		{
-			setcookie('accesos1', 0, time()-3600);
+			setcookie('accesos1', 0, -1);
+			header("Location:cookies1.php");
 		}
 		else
 		{
@@ -22,19 +23,22 @@
 			}
 		}
 	?>
-	<?php
-		if (isset($_COOKIE['accesos1']))
-		{
-			print("Contador de visitas:" . $_COOKIE['accesos1']);
-		}
-		else
-		{
-			setcookie('accesos1', 0);
-			print("Esta es su primera visita");
-		}
-	?>
-	<form action="" method="post">
-		<input type="submit" value="Reiniciar" name="reboot">
+	<form action="./cookies1.php" method="post">
+		<label for="">
+			<?php
+				if (isset($_COOKIE['accesos1']))
+				{
+					print("Contador de visitas:$_COOKIE[accesos1]");
+				}
+				else
+				{
+					setcookie('accesos1', 1);
+					print("Esta es su primera visita");
+				}
+			?>
+		</label>
+		<br>
+		<input type="submit" value="Reiniciar" name="reiniciar">
 	</form>
 </body>
 </html>
