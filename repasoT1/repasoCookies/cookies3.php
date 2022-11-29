@@ -20,7 +20,7 @@
 			{
 				if ($action == "Crear")
 				{
-					$tiempo = $_POST['segs'];
+					$tiempo = $_POST['segs']; 
 					setcookie("cookieTemporal", time()+$tiempo, time()+$tiempo);
 				}
 				else
