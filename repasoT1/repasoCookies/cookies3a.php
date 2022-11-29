@@ -8,11 +8,37 @@
 </head>
 <body>
 	<?php
-		if (isset($_COOKIE['action']))
+		if (isset($_POST['action']))
 		{
-			if ($_COOKIE['action'] == "Comprobar")
+			$action = $_POST['action'];
+			if ($action == "Destruir")
 			{
-				print("Tiempo restante $_COOKIE[action]");
+				setcookie("cookieTemporal", "", -1);
+				print("Se ha destruido la cookie");
+			}
+			else
+			{
+				if ($action == "Crear")
+				{
+					$tiempo = $_POST['segs'];
+					setcookie("cookieTemporal", time()+$tiempo, time()+$tiempo);
+				}
+				else
+				{
+					if (isset($_COOKIE['cookieTemporal']))
+					{
+						$tiempo_actual = time();
+						if ($tiempo_actual < $_COOKIE['cookieTemporal'])
+						{
+							$tiempo = $_COOKIE['cookieTemporal'] - $tiempo_actual;
+							print("Tiempo restante: $tiempo");
+						}
+						else
+						{
+							print("La cookie ha caducado");
+						}
+					}
+				}
 			}
 		}
 	?>

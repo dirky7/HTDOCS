@@ -2,7 +2,7 @@
 	$action = $_POST['action'];
 	if ($action == "Destruir")
 	{
-		setcookie("action", "", 1);
+		setcookie("action", "", -1);
 	}
 	else
 	{
