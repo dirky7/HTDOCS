@@ -24,7 +24,7 @@
 	<p>Cambio de color</p>
 	<ul>
 		<li>
-			<a href="./cookies2p1.php">Volver atras</a>
+			<a href="./cookies2a.php">Volver atras</a>
 		</li>
 	</ul>
 

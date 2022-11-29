@@ -38,7 +38,7 @@
 			<a href="?color=none">Ninguno</a>
 		</li>
 		<li>
-			<a href="./cookies2p2.php">Comprobar color</a>
+			<a href="./cookies2b.php">Comprobar color</a>
 		</li>
 	</ul>
 
