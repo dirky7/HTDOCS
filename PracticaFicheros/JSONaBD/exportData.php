@@ -1,8 +1,8 @@
 <?php
-//iConexión a la BD
+//iConexiÃ³n a la BD
 include 'funciones.php';
 	escribirJSONBD("miembros.json");
-	header("Location:index.php");
+	//header("Location:index.php");
 
 
 ?>

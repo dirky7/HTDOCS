@@ -1,94 +1,84 @@
 <?php
 function conexion_bd($base){
-	try
-	{
-		$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-		$dsn = "mysql:host=localhost;dbname=$base";
-		$con = new PDO($dsn, "root", "", $opc);
-		return ($con);
+    try{
+		$conexion = new PDO("mysql:host=localhost;dbname=".$base, "root", "");
+		$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
-	catch (PDOException $er)
-	{
-		$error = $er->getCode();
-		$anuncio = $er->getMessage();
-		die("Error" . $anuncio . " " . $error);
+	catch (PDOException $e){
+		$error = $e->getCode();
+		$mensaje = $e->getMessage();
+
 	}
+	 if (isset($error)){
+		echo $mensaje;
+	}
+	 
+	 return $conexion;
     
 }//fin de conexion_bd
+function visualizarTabla($base){
+    //Conectarse a la base de datos
+    $con=conexion_bd($base);
+    //Consulta a la base de datos
+    $sql="select * from miembros";
+    $query=$con->query($sql);
 
-function visualizar_tabla($base)
-{
-	$con=conexion_bd($base);
-	$consulta = "SELECT * FROM miembros";
-	$query = $con->query($consulta);
+    //Recorremos la BD y vamos creando filas
+    if($query){
+        $row=$query->fetch();
+        while ($row!=null){
+            echo "<tr>";
+            echo "<td>".$row['nombre']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$row['telefono']."</td>";
+            echo "<td>".$row['creado']."</td>";
+            if($row['estado']==1)
+                echo "<td>Activo</td>";
+            else
+                echo "<td>Inactivo</td>";
+            echo "</tr>";
+            $row=$query->fetch();
 
-	if ($query)
-	{
-		$row = $query->fetch();
-		while($row != null)
-		{
-			echo "<tr>";
-			echo "<td>". $row['nombre'] . "</td>";
-			echo "<td>". $row['email'] . "</td>";
-			echo "<td>". $row['telefono'] . "</td>";
-			echo "<td>". $row['creado'] . "</td>";
-			echo "<td>". $row['modificado'] . "</td>";
-			if ($row['estado'] == 1)
-			{
-				echo "<td>Activo</td>";
-			}
-			else
-			{
-				echo "<td>Inactivo</td>";
-			}
-			echo "</tr>";
-			$row = $query->fetch();
-		}
-		unset($con);
-	}
-	else
-	{
-		echo "<tr><td colspan='5'>No se han encontrado miembros</td></tr>";
-	}
+        }
+        unset($con);
+    }else{
+        echo "<tr><td colspan='5'>No se han encontrado miembros</td></tr>";
+    }
+
+
 }
 
-function crearJSON($base)
-{
-	$con = conexion_bd($base);
-	$sql = "SELECT * FROM miembros";
-	$query = $con->query($sql);
+function crearJSON($base){
+	//Conectarse a la base de datos
+    $con=conexion_bd($base);
+    //Consulta a la base de datos
+    $sql="select * from miembros";
+    $query=$con->query($sql);
 
-	$filename = "miembros_" . date('Y-m-d') . ".json";
-	
-	if ($query)
-	{
-		$data = "[]";
-		
-		$data = json_decode($data, true);
-		
-		$row = $query->fetch();
-		while ($row != null)
-		{
-			$estado = ($row['estado'] == 1)?'Activo':'Inactivo';
-			$campos = array(
-				'id' => $row['id'], 
-				'nombre' => $row['nombre'], 
-				'email' => $row['email'], 
-				'telefono' => $row['telefono'], 
-				'creado' => $row['creado'], 
-				'modificado' => $row['modificado'], 
-				'estado' => $estado);
+    //Recorremos la BD y vamos creando filas
+    if($query){
+        //Condicionar nuestro array
+         $data ="[]";
+         $data = json_decode($data, true);
 
-			$data[] = $campos;
-			$row = $query->fetch();
-		}
-		unset($row);
-
-		$data = json_encode($data, JSON_PRETTY_PRINT);
-		file_put_contents($filename, $data);
-
-		#header('Content-Type: text/csv');
-		#header('Content-Disposition: attachment; filename="' . $filename . '";');
-	}
+        $row=$query->fetch();
+        while ($row!=null){
+            $estado=($row['estado']=='1')?'Activo':'Inactivo';
+            $add_arr = array(
+                'id' => $row['id'],
+                'nombre' => $row['nombre'],
+                'email' => $row['email'],
+                'telefono' => $row['telefono'],
+                'creado' => $row['creado'],
+                'modificado' => $row['modificado'],
+                'estado' => $estado
+                );
+            $data[] = $add_arr;
+            $row=$query->fetch();
+        }
+        unset($con);
+        $data = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents('miembros.json', $data);
+    }
 }
 ?>

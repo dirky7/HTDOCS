@@ -32,7 +32,7 @@
                         $comerciales = $_POST['comerciales'];
                     }
                     // Rellenamos el desplegable con los datos de todos los productos
-                    $conexion=conectar_bd("ventas_comerciales");
+                    $conexion=conectar_bd("venta_comerciales");
                     $sql="SELECT codigo,nombre FROM comerciales";
                     $resultado = $conexion->query($sql);
                     if ($resultado) {
@@ -57,7 +57,7 @@
                 echo '<div class="centrar-horizont2">';
                 if(isset($_POST['enviar'])){
                     $sql="SELECT * FROM ventas INNER JOIN comerciales ON ventas.codComercial=comerciales.codigo WHERE ventas.codComercial='$comerciales'";
-                    $tiene=tiene_ventas_asociadas("ventas_comerciales",$sql);
+                    $tiene=tiene_ventas_asociadas("venta_comerciales",$sql);
                     //Si el comercial tiene ventas asociadas se avisará al usuario y se dará la posibilidad de eliminar el comercial junto con sus ventas
                     if($tiene){
                         echo "El comercial seleccionado tiene ventas asociadas.Si elimina este comercial también se eliminarán dichas ventas sociadas.";
@@ -75,9 +75,9 @@
                 echo '<div class="centrar-horizont2">';
                 if(isset($_POST['eliminar_asociadas'])){
                     $sql="DELETE FROM ventas WHERE codComercial='$comerciales'";
-                    realizar_operacion("ventas_comerciales",$sql);
+                    realizar_operacion("venta_comerciales",$sql);
                     $sql="DELETE FROM comerciales WHERE codigo='$comerciales'";
-                    $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                    $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                     if($operacion_correcta){
                         echo '<p class="correcto">Operacion realizada con exito</p>';
                         //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasdos 4 segundos para ver los datos actualizados
@@ -91,7 +91,7 @@
                 echo '<div class="centrar-horizont2">';
                 if(isset($_POST['eliminar'])){
                     $sql="DELETE FROM comerciales WHERE codigo='$comerciales'";
-                    $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                    $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                     if($operacion_correcta){
                         echo '<p class="correcto">Operacion realizada con exito</p>';
                         //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasdos 4 segundos para ver los datos actualizados

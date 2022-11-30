@@ -20,15 +20,14 @@
                       <th>Email</th>
                       <th>Telefono</th>
                       <th>Creado</th>
-					  <th>Modificado</th>
                       <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-					<?php
-						include "funciones.php";
-						visualizarTablaCSV("test");
-										
+                <?php
+					include "funciones.php";
+					visualizarTablaCSV();
+					 				
 					?>
                 </tbody>
             </table>

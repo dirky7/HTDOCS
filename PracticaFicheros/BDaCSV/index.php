@@ -26,8 +26,9 @@
                 <tbody>
                 <?php
                     include "funciones.php";
-					visualizar_tabla("test");
-				?>
+                    visualizarTabla("test");
+					
+					?>
                 </tbody>
             </table>
         </div>

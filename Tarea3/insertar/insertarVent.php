@@ -31,7 +31,7 @@
                     if (isset($_POST['codComercial'])){
                         $codComercial = $_POST['codComercial'];
                     }
-                    $conexion=conectar_bd("ventas_comerciales");
+                    $conexion=conectar_bd("venta_comerciales");
                     $sql="SELECT codigo FROM comerciales";
                     $resultado = $conexion->query($sql);
                     if ($resultado) {
@@ -58,7 +58,7 @@
                     if (isset($_POST['refProducto'])){
                         $refProducto = $_POST['refProducto'];
                     }
-                    $conexion=conectar_bd("ventas_comerciales");
+                    $conexion=conectar_bd("venta_comerciales");
                     $sql="SELECT referencia FROM productos";
                     $resultado = $conexion->query($sql);
                     if ($resultado) {
@@ -91,7 +91,7 @@
                 $cantidad=$_POST['cantidad'];
                 $fecha=$_POST['fecha'];
                 $sql="INSERT INTO ventas (codComercial,refProducto,cantidad,fecha) VALUES ('$codComercial', '$refProducto',$cantidad,'$fecha');";
-                $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                     if($operacion_correcta){
                         echo "<p class='correcto'>Operacion realizada con exito</p>";
                         //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasdos 4 segundos para ver los datos actualizados

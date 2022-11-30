@@ -47,7 +47,7 @@
                 $precio=$_POST['precio'];
                 $descuento=$_POST['descuento'];
                 $sql="INSERT INTO productos (referencia,nombre,descripcion,precio,descuento) VALUES ('$referencia', '$nombre','$descripcion',$precio,$descuento);";
-                $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                     if($operacion_correcta){
                         echo "<p class='correcto'>Operacion realizada con exito</p>";
                         //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasdos 4 segundos para ver los datos actualizados

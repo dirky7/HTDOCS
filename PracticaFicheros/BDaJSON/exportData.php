@@ -1,6 +1,8 @@
 <?php
-	//iConexi�n a la BD
-	include "funciones.php";
+//Conexión a la BD
+include "funciones.php";
+crearJSON("test");
+header("Location:index.php");    
 
-	crearJSON("test");
+
 ?>

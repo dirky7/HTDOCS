@@ -34,7 +34,7 @@
                         $ventas = $_POST['ventas'];
                     }
                     // Rellenamos el desplegable con los datos de todos los productos
-                    $conexion=conectar_bd("ventas_comerciales");
+                    $conexion=conectar_bd("venta_comerciales");
                     $sql="SELECT * FROM ventas";
                     $resultado = $conexion->query($sql);
                     if ($resultado) {
@@ -72,7 +72,7 @@
                     $refProducto=$clavesVentas[1];
                     $fecha=$clavesVentas[2];
                     $sql="DELETE FROM ventas WHERE codComercial='$codComercial' AND refProducto='$refProducto' AND fecha='$fecha' ";
-                    $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                    $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                     if($operacion_correcta){
                         echo '<p class="correcto">Operacion realizada con exito</p>';
                         //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasados 4 segundos para ver los datos actualizados

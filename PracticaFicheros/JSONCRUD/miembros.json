@@ -1,29 +1,47 @@
 [
     {
-        "id": "1",
-        "nombre": "Ramon Ramirez",
-        "email": "ramonr@gmail.com",
+        "id": 1,
+        "nombre": "Mar\u00eda del Monte",
+        "email": "mmonte@gmail.com",
         "telefono": "987878787",
-        "creado": "2022-11-21T12:44",
-        "modificado": "2022-11-21T12:44",
-        "estado": "1"
+        "creado": "2022-11-22 18:57:53",
+        "modificado": "2022-11-22 18:57:53",
+        "estado": "Activo"
     },
     {
-        "id": "3",
-        "nombre": "Jacinta Benavente",
-        "email": "jacinta@gmail.com",
-        "telefono": "987111111",
-        "creado": "2022-11-21T12:50",
-        "modificado": "22-11-21 10:37:13",
-        "estado": "0"
+        "id": "5",
+        "nombre": "Rufian Ramirez",
+        "email": "rufianramirez@gmail.com",
+        "telefono": "688876768",
+        "creado": "2021-11-22T18:58:22",
+        "modificado": "22-11-24 09:10:35",
+        "estado": "Inactivo"
+    },
+    {
+        "id": 3,
+        "nombre": "Carmen Ordo\u00f1ez",
+        "email": "carmen@gmail.com",
+        "telefono": "952121212",
+        "creado": "2022-11-22 18:59:20",
+        "modificado": "2022-11-22 18:59:20",
+        "estado": "Inactivo"
     },
     {
         "id": "2",
-        "nombre": "Carmen Ordo\u00f1ez",
-        "email": "carmen22@gmail.com",
-        "telefono": "678678679",
-        "creado": "2022-11-21T22:19",
-        "modificado": "22-11-21 10:38:14",
-        "estado": "0"
+        "nombre": "Arturo Reverte",
+        "email": "arturo@gmail.com",
+        "telefono": "699699699",
+        "creado": "2022-11-01T19:12",
+        "modificado": "2022-11-01T19:12",
+        "estado": "Inactivo"
+    },
+    {
+        "id": "4",
+        "nombre": "Lola Flores",
+        "email": "lola@gmail.com",
+        "telefono": "952343434",
+        "creado": "2022-11-14T19:15",
+        "modificado": "2022-11-14T19:15",
+        "estado": "Activo"
     }
 ]

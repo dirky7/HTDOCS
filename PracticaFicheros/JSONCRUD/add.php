@@ -9,35 +9,43 @@
 
 <body>
 	<?php
-		include "funciones.php";
-		
-		$filename = "miembros.json";
-		if (isset($_POST['btnadd']))
+	include 'funciones.php';
+	$filename = 'miembros.json';
+	if (isset($_POST['btnadd'])) 
+	{
+		if (
+			!empty($_POST['txtid']) && !empty($_POST['txtnombre']) &&
+			!empty($_POST['txtemail']) && !empty($_POST['txtelefono']) && !empty($_POST['txtFecha']) && !empty($_POST['txtestado'])
+		) 
 		{
 			$data = file_get_contents($filename);
 			$data = json_decode($data, true);
 
-			$add_array = array(
+
+			$add_arr = array(
 				'id' => $_POST['txtid'],
 				'nombre' => $_POST['txtnombre'],
 				'email' => $_POST['txtemail'],
 				'telefono' => $_POST['txtelefono'],
-				'creado' => $_POST['txtfecha'],
-				'estado' => $_POST['txtestado']
+				'creado' => $_POST['txtFecha'],
+				'modificado' => $_POST['txtFecha'],
+				'estado' => convertirEstado($_POST['txtestado'])
 			);
+			//buscar si id repetido
+			if (!buscarId($data, $_POST['txtid'])) {
+				$data[] = $add_arr;
+				$data = json_encode($data, JSON_PRETTY_PRINT);
+				file_put_contents($filename, $data);
+			} else {
+				setcookie('mierror', "Id repetido");
+				echo "id repetido";
+			}
+		} else {
+			setcookie('mierror', "Debes rellenar todos los campos");
 		}
 
-		if (buscar_id($data, $_POST['txtid']))
-		{
-			$data[] = $add_array;
-			$data = json_encode($data, JSON_PRETTY_PRINT);
-			file_put_contents($filename, $data);
-			header("Location:index.html");
-		}
-		else
-		{
-			echo "id repetido";
-		}
+		header("Location:index.php");	
+	}
 
 	?>
 	<div class="container">

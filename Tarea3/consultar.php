@@ -31,7 +31,7 @@
                     $comerciales = $_POST['comerciales'];
                 }
                 // Rellenamos el desplegable con los datos de todos los productos
-                $conexion=conectar_bd("ventas_comerciales");
+                $conexion=conectar_bd("venta_comerciales");
                 $sql="SELECT codigo,nombre FROM comerciales";
                 $resultado = $conexion->query($sql);
                 if ($resultado) {
@@ -54,7 +54,7 @@
 
         <?php
             if(isset($_POST['enviar'])){
-                mostrar_tabla_ventas($comerciales,"ventas_comerciales");
+                mostrar_tabla_ventas($comerciales,"venta_comerciales");
             }
             unset($conexion);
         ?>

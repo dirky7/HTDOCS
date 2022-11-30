@@ -31,7 +31,7 @@
                         $comerciales = $_POST['comerciales'];
                     }
                     // Rellenamos el desplegable con los datos de todos los productos
-                    $conexion=conectar_bd("ventas_comerciales");
+                    $conexion=conectar_bd("venta_comerciales");
                     $sql="SELECT codigo,nombre FROM comerciales";
                     $resultado = $conexion->query($sql);
                     if ($resultado) {
@@ -81,7 +81,7 @@
                         $hijos=$_POST['hijos'];
                         $fecha=$_POST['fechaNac'];
                         $sql="UPDATE comerciales SET nombre='$nombre',salario=$salario,hijos=$hijos,fNacimiento='$fecha' WHERE codigo='$comerciales'";
-                        $operacion_correcta=realizar_operacion("ventas_comerciales",$sql);
+                        $operacion_correcta=realizar_operacion("venta_comerciales",$sql);
                         if($operacion_correcta){
                             echo "<p class='correcto'>Operacion realizada con exito</p>";
                             //Si la operacion es correcta mostramos el mensaje y actualizamos la pagina pasdos 4 segundos para ver los datos actualizados
