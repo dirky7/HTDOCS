@@ -1,0 +1,171 @@
+body{
+  margin: 0;
+  margin-top: 1em;
+  background-color: darkgrey;
+}
+
+.contenido{
+  width: 50%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  padding:1em;
+}
+/*-------------------Estilo de la Barra de Navgeacion-------------------*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+/*li {
+  float:left;
+}*/
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li a:hover {
+  background-color: #111;
+  color: white;
+}
+
+h1.presentacion{
+  background-color: #333;
+  color:white;
+  padding: 2em;
+  border-radius: 15px;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/*-------------------Estilo del menu opciones con el que podemos elegir una tabla en la que operar-------------------*/
+h1{
+  text-align: center;
+  margin-top: 1em;
+}
+
+h2{
+  text-align: center;
+  margin-top: 1em;
+  font-weight: normal;
+}
+
+div.opciones{
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+div.opciones a{
+  padding: 4em;
+  margin: 1em;
+  text-decoration: none;
+  background-color: #333;
+  color: white;
+}
+
+div.opciones a:hover{
+  background-color: #111;
+  color: white;
+}
+
+/*-------------------Estilo de la pagina Consultar-------------------*/
+form.consultar{
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+form.consultar select{
+  margin-left: 20px;
+}
+
+form.consultar input{
+  margin-left: 20px;
+}
+
+table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+tr,th,td{
+  border: 1px solid black;
+  padding: 1em;
+}
+
+th{
+  background-color:dimgray;
+  color: white;
+}
+
+/*-------------------Estilo de las pagina Eliminar-------------------*/
+.centrar-horizont{
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.centrar-horizont2{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+form.eliminar select{
+  margin-left: 20px;
+}
+
+form.eliminar input{
+  margin-left: 20px;
+}
+
+.reducir-ancho{
+  width: 40%;
+}
+
+/*-----------------Estilo para los mensajes de operacion correcta e incorrecta--------*/
+p.correcto{
+    background-color:olivedrab;
+    color: white;
+    border-radius: 20px;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 3em;
+    margin-top: 2em;
+}
+
+p.error{
+    background-color: brown;
+    color:white;
+    border-radius: 20px;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 3em;
+    margin-top: 2em;
+}
