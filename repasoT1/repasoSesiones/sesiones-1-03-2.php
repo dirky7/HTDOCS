@@ -29,6 +29,15 @@
 	if (!empty($texto))
 	{
 		$_SESSION['texto'] = $texto;
+		if (!ctype_upper($texto))
+		{
+			$_SESSION['error'] = "Has introducido una minuscula";	
+		}
+		
+	}
+	else
+	{
+		$_SESSION['error'] = "No ha introducido nada";
 	}
 
 	// Guardamos la palabra en la sesión 
