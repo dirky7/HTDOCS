@@ -1,6 +1,41 @@
 <?php
-    include 'funciones.inc';
-   
+    include 'funciones.inc.php';
+   //Recuperar la sesion
+   session_start();
+
+   //Comprobamos que el usuario se ha autentificado
+   if(!isset($_SESSION['usuario'])){
+     die("Error -debe <a href='index.php'>identificarse</a>");
+   }
+   //Si hacemos clic en publicar
+   if(isset($_POST['publicar'])){
+    //Comprobamos si el textArea tiene contenido
+    if(empty($_POST['textarea'])){
+      $error="Debes introducir un anuncio";
+    }else{
+      //controlar que no hemos escrito mas de 500 caracteres
+      if(strlen($_POST['textarea'])>500){
+        $error="El contenido debe ser menor de 500 caracteres";
+      }else{
+        $autor=$_SESSION['usuario'];
+        $contenido=$_POST['textarea'];
+        $moroso=$_POST['moroso'];
+        $fecha=date('Y-m-d',time());
+        $localidad=$_POST['localidad'];
+
+        //Conectamos a la bd
+        $con=conexion_bd("morosos");
+
+        if(inserta_anuncio($autor, $moroso,$localidad,$contenido, $fecha, $con)){
+          $anuncio="Anuncio publicado correctamente";
+        }else{
+          $error="Error al crear el anuncio";
+        }
+        //Desconectar BD
+        unset($con);
+      }
+    }
+   }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
@@ -12,6 +47,11 @@
   <title>Foro DWES</title>
   <link href="css/voluntario.css" rel="stylesheet" type="text/css">
   <link href="css/anuncio.css" rel="stylesheet" type="text/css">
+  <style>
+    body{
+      background-color:<?php if(isset($_COOKIE['colorFondo'])) echo $_COOKIE['colorFondo']; ?>;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,8 +67,8 @@
         <li><a href="preferencias.php">Preferencias</a></li>
         <li><a href="logoff.php">Salir</a></li>
     </ul>
-       <div class="sesion"><p>Hora de conexión: <?php  ?></p></div>
-       <div class="sesion"><p>Bienvenido <?php  ?></p></div>        
+       <div class="sesion"><p>Hora de conexión: <?php echo $_SESSION['hora']; ?></p></div>
+       <div class="sesion"><p>Bienvenido <?php echo $_SESSION['usuario']; ?></p></div>        
   </div>
   <div id="publicar_anuncio">
   <form action='anuncio.php' method='post'>

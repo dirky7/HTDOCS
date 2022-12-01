@@ -1,23 +1,25 @@
 
 <?php
-    include 'funciones.inc';
+    include 'funciones.inc.php';
+    //Recuperar la sesión
     session_start();
 
-	if (!isset($_SESSION['usuarios']))
-	{
-		die("ERROR - debe <a href='index.php'>Identificarse</a>");
-	}
-	if (isset($_POST['cambiar']))
-	{
-		$color = $_POST['color'];
-		setcookie('color_fondo', $color, $time()+3600);
-		header("Location:preferencias.php");
-	}
-	if (isset($_POST['restablecer']))
-	{
-		setcookie('color_fondo', 'white', $time()+3600);
-		header("Location:preferencias.php");
-	}
+    //comprobamos que el usuario existe
+    if(!isset($_SESSION['usuario'])){
+      die("Error - debe <a href='index.php'>Identificarse</a>");
+    }
+    
+    //Si hemos hecho clic en cambiar
+    if(isset($_POST['cambiar'])){
+      $color=$_POST['color'];
+      setcookie('colorFondo',$color,time()+3600);
+      header("Location:preferencias.php");
+    }
+    //Si hemos hecho clic en restablecer
+    if(isset($_POST['restablecer'])){
+      setcookie('colorFondo',"white",time()+3600);
+      header("Location:preferencias.php");
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
@@ -30,9 +32,9 @@
   <link href="css/voluntario.css" rel="stylesheet" type="text/css">
   <link href="css/preferencias.css" rel="stylesheet" type="text/css">
   <style>
-		body{
-			background-color: <?php if (isset($_COOKIE['color_fondo'])) echo $_COOKIE['color_fondo']?>;
-		}
+    body{
+      background-color:<?php if(isset($_COOKIE['colorFondo'])) echo $_COOKIE['colorFondo']; ?>;
+    }
   </style>
 </head>
 
@@ -49,8 +51,8 @@
         <li><a href="preferencias.php">Preferencias</a></li>
         <li><a href="logoff.php">Salir</a></li>
     </ul>
-       <div class="sesion"><p>Hora de conexión: <?php ?></p></div>
-       <div class="sesion"><p>Bienvenido <?php  ?></p></div>        
+       <div class="sesion"><p>Hora de conexión: <?php echo $_SESSION['hora']; ?></p></div>
+       <div class="sesion"><p>Bienvenido <?php echo $_SESSION['usuario']; ?></p></div>        
   </div>
   <div id="preferencias">
   <form action='preferencias.php' method='post'>
