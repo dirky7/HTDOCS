@@ -52,4 +52,3 @@ function buscarId($data,$id){
     }
     return $encontrado;
 }
-?>

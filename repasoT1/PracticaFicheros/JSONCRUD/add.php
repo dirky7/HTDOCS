@@ -11,13 +11,11 @@
 	<?php
 	include 'funciones.php';
 	$filename = 'miembros.json';
-	if (isset($_POST['btnadd'])) 
-	{
+	if (isset($_POST['btnadd'])) {
 		if (
 			!empty($_POST['txtid']) && !empty($_POST['txtnombre']) &&
 			!empty($_POST['txtemail']) && !empty($_POST['txtelefono']) && !empty($_POST['txtFecha']) && !empty($_POST['txtestado'])
-		) 
-		{
+		) {
 			$data = file_get_contents($filename);
 			$data = json_decode($data, true);
 
@@ -44,7 +42,7 @@
 			setcookie('mierror', "Debes rellenar todos los campos");
 		}
 
-		header("Location:index.php");	
+		header("Location:index.php");
 	}
 
 	?>

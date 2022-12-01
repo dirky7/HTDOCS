@@ -73,4 +73,3 @@ function escribirJSONBD($fichero){
 		
 	}
 }
-?>

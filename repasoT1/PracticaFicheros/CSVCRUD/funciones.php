@@ -65,5 +65,3 @@ function write_csv($matriz_productos, $ruta_csv) {
 	}
 	fclose($outputBuffer);
 }
-
-?>
