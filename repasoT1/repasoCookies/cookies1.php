@@ -8,7 +8,7 @@
 </head>
 <body>
 	<?php
-		if (isset($_POST['reiniciar']))
+		if (isset($_POST['Reiniciar']))
 		{
 			setcookie('accesos1', 0, -1);
 			header("Location:cookies1.php");
