@@ -16,7 +16,7 @@
 		$contador = 0;
 		if (isset($_POST['reboot']))
 		{
-			setcookie('contador', 0, -1);
+			setcookie('contador', 0);
 			header("Location:ejercicio1.php");
 		}
 		else
@@ -47,6 +47,8 @@
 			}
 			else
 			{
+				setcookie('contador', 0);
+				header("Location:ejercicio1.php");
 				print("<span>0</span>");
 			}
 		?>
