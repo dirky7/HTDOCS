@@ -20,7 +20,7 @@
 		$errores = errorValidarDatosUsuario($nuevo_usuario);
 		if ($errores == false)
 		{
-			$mensaje_error = "<div>Perfecto!</div>";
+			insert_user($nuevo_usuario);
 		}
 		else
 		{
