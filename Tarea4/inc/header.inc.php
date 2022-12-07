@@ -9,7 +9,7 @@ require_once("funciones.inc.php");
 
 
 try {
-	$conexion = new PDO('mysql:host=localhost;dbname=conta2', 'root', 'root');
+	$conexion = new PDO('mysql:host=localhost;dbname=conta2', 'root', '');
 	$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
 	$error = "#".$e->getCode().": ".$e->getMessage();

@@ -40,7 +40,27 @@ function getUserData($login)
 	
 }
 
+function execute_query($sql)
+{
+	try {
+		global $conexion;
+		$conexion->exec($sql);
+	} catch (PDOException $er) {
+		die("Linea: " . $er->getCode() . " <br>Error: " . $er->getMessage());
+	}
+}
 
+function insert_user($nuevo_usuario)
+{
+	global $conexion;
+	$login = $nuevo_usuario['login'];
+	$password = password_hash($nuevo_usuario['password'], PASSWORD_DEFAULT);
+	$nombre = $nuevo_usuario['nombre'];
+	$fNacimiento = $nuevo_usuario['fNacimiento'];
+	$presupuesto = $nuevo_usuario['presupuesto'];
+	$sql = "INSERT INTO usuarios (login, password, nombre, fNacimiento, presupuesto) VALUES ('$login', '$password', '$nombre', '$fNacimiento', '$presupuesto')";
+	execute_query($sql);
+}
 
 /* Valida los datos de usuario
 *	Recibe el array asosiativo por referencia con los datos del usuario
