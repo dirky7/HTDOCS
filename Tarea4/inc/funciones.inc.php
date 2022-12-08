@@ -46,8 +46,30 @@ function execute_query($sql)
 		global $conexion;
 		$conexion->exec($sql);
 	} catch (PDOException $er) {
-		die("Linea: " . $er->getCode() . " <br>Error: " . $er->getMessage());
+		die($er->getMessage());
 	}
+}
+
+function user_exists($login)
+{
+	global $conexion;
+	$sql = "SELECT * FROM usuarios WHERE login = '$login'";
+	$query = $conexion->query($sql);
+	$query = $query->fetch();
+	if ($query != NULL)
+	{
+		return (true);
+	}
+	return (false);
+}
+
+function verify_password($login, $password)
+{
+	global $conexion;
+	$sql = "SELECT password FROM usuarios WHERE login = '$login'";
+	$query = $conexion->query($sql);
+	$query = $query->fetch();	
+	return (password_verify($password, $query[0]));
 }
 
 function insert_user($nuevo_usuario)

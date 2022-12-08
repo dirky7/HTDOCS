@@ -1,5 +1,51 @@
 <?php
 	include "./inc/header.inc.php";
+	session_name("usuario");
+	session_name("clave");
+	session_name("hora");
+	session_start();
+	if (isset($_POST['form_login']))
+	{
+		if (user_exists($_POST['usuario']))
+		{
+			if (verify_password($_POST['usuario'], $_POST['clave']))
+			{
+				$_SESSION['usuario'] = $_POST['usuario'];
+				$_SESSION['clave'] = $_PSOT['clave'];
+				$_SESSION['hora'] = date("H:i", time());
+				header("Location:./cuenta/");
+			}
+			else
+			{
+				$error = "Contraseña no coincidente";
+			}
+		}
+		else
+		{
+			$error = "Usuario no existente";
+		}
+	}
+	if (isset($_POST['form_admin_login']))
+	{
+		if ($_POST['usuario'] == "daw")
+		{
+			if (verify_password("daw", $_POST['clave']))
+			{
+				$_SESSION['usuario'] = $_POST['usuario'];
+				$_SESSION['clave'] = $_PSOT['clave'];
+				$_SESSION['hora'] = date("H:i", time());
+				header("Location:./admin/");
+			}
+			else
+			{
+				$error = "Contraseña no coincidente";
+			}
+		}
+		else
+		{
+			$error = "Permiso denegado por administrador";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>

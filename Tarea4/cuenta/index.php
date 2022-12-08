@@ -1,5 +1,8 @@
 <?php
-
+	session_name("usuario");
+	session_name("clave");
+	session_name("hora");
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +15,7 @@
 	<header>
 		<h1>Gestión Personal</h1>
 		<div id="nombre-usuario-cabecera">
-			<i>Bienvenid@</i> <b><?php  ?></b>
+			<i>Bienvenid@</i> <b><?php echo $_SESSION['usuario'] ?> | Sesión iniciada a las <?php echo $_SESSION['hora'] ?></b>
 		</div>
 	</header>
 	<nav>Mi Cuenta</nav>
