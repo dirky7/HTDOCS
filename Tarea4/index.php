@@ -1,15 +1,15 @@
 <?php
 	include "./inc/header.inc.php";
-	session_name("usuario");
-	session_name("clave");
-	session_name("hora");
-	session_start();
 	if (isset($_POST['form_login']))
 	{
 		if (user_exists($_POST['usuario']))
 		{
 			if (verify_password($_POST['usuario'], $_POST['clave']))
 			{
+				session_name("usuario");
+				session_name("clave");
+				session_name("hora");
+				session_start();
 				$_SESSION['usuario'] = $_POST['usuario'];
 				$_SESSION['clave'] = $_PSOT['clave'];
 				$_SESSION['hora'] = date("H:i", time());
@@ -31,6 +31,10 @@
 		{
 			if (verify_password("daw", $_POST['clave']))
 			{
+				session_name("usuario");
+				session_name("clave");
+				session_name("hora");
+				session_start();
 				$_SESSION['usuario'] = $_POST['usuario'];
 				$_SESSION['clave'] = $_PSOT['clave'];
 				$_SESSION['hora'] = date("H:i", time());

@@ -72,6 +72,31 @@ function verify_password($login, $password)
 	return (password_verify($password, $query[0]));
 }
 
+function generate_key()
+{
+	$codigo = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 4);
+	return $codigo;
+}
+
+function insert_transac($usuario, $ingreso)
+{
+	global $conexion;
+	$codigo = generate_key();
+	$login = $usuario['login'];
+	$fecha = $usuario['fecha'];
+	$concepto = $usuario['concepto'];
+	if ($ingreso == "+")
+	{
+		$cantidad = floatval($usuario['cantidad']) + floatval(devolver_dinero($login));
+	}
+	else
+	{
+		$cantidad = floatval(devolver_dinero($login) - floatval($usuario['cantidad']));
+	}
+	$sql = "INSERT INTO movimientos (codigoMov, loginUsu, fecha, concepto, cantidad) VALUES ('$codigo', '$login', '$fecha', '$concepto', '$cantidad')";
+	execute_query($sql);
+}
+
 function insert_user($nuevo_usuario)
 {
 	global $conexion;
@@ -82,6 +107,38 @@ function insert_user($nuevo_usuario)
 	$presupuesto = $nuevo_usuario['presupuesto'];
 	$sql = "INSERT INTO usuarios (login, password, nombre, fNacimiento, presupuesto) VALUES ('$login', '$password', '$nombre', '$fNacimiento', '$presupuesto')";
 	execute_query($sql);
+}
+
+function devolver_dinero($login)
+{
+	global $conexion;
+	$sql = "SELECT cantidad FROM movimientos WHERE loginUsu = '$login' ORDER BY fecha DESC";
+	$query = $conexion->query($sql);
+	$query = $query->fetch();
+	return ($query['cantidad']);
+
+}
+
+function print_movimientos($login)
+{
+	#---------WIP----------
+	global $conexion;
+	$sql = "SELECT * FROM movimientos WHERE loginUsu = '$login' ORDER BY fecha";
+	$query = $conexion->query($sql);
+	if ($query)
+	{
+		$row = $query->fetch();
+		while ($row != NULL)
+		{
+			echo "<tr>";
+			echo "<td>" . $row['codigoMov'] . "</td>";
+			echo "<td>" . $row['fecha'] . "</td>";
+			echo "<td>" . $row['concepto'] . "</td>";
+			echo "<td>" . $row['cantidad'] . "</td>";
+			echo "</tr>";
+			$row = $query->fetch();
+		}
+	}
 }
 
 /* Valida los datos de usuario

@@ -1,5 +1,9 @@
 <?php
-
+	include "../inc/header.inc.php";
+	session_name("usuario");
+	session_name("clave");
+	session_name("hora");
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +16,7 @@
 	<header>
 		<h1>Gestión Personal: Movimientos</h1>
 		<div id="nombre-usuario-cabecera">
-			<i>Bienvenid@</i> <b><?php  ?></b>
+			<i>Bienvenid@</i> <b><?php echo $_SESSION['usuario'] ?> | Iniciado a las <?php echo $_SESSION['hora'] ?></b>
 		</div>
 	</header>
 	<nav>
@@ -43,8 +47,7 @@
 			</thead>
 			<tbody>
 				<?php
-				
-				
+					print_movimientos($_SESSION['usuario']);				
 				?>
 			</tbody>
 			<tfoot>

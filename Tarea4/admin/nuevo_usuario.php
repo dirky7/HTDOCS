@@ -21,6 +21,13 @@
 		if ($errores == false)
 		{
 			insert_user($nuevo_usuario);
+			$nueva_transaccion = array(
+				'login' => $login,
+				'fecha' => date('Y-m-d'),
+				'concepto' => "Cuenta abierta",
+				'cantidad' => $presupuesto
+			);
+			insert_transac($nueva_transaccion, "+");
 		}
 		else
 		{

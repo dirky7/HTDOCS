@@ -15,7 +15,7 @@
 	<header>
 		<h1>Gestión Personal</h1>
 		<div id="nombre-usuario-cabecera">
-			<i>Bienvenid@</i> <b><?php echo $_SESSION['usuario'] ?> | Sesión iniciada a las <?php echo $_SESSION['hora'] ?></b>
+			<i>Bienvenid@</i> <b><?php echo $_SESSION['usuario'] ?> | Iniciado a las <?php echo $_SESSION['hora'] ?></b>
 		</div>
 	</header>
 	<nav>Mi Cuenta</nav>
