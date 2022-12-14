@@ -1,20 +1,20 @@
 <?php
 	function conectar($base)
 	{
-		$conexion = mysqli_connect("localhost", "root", "", $base) or die("Problemas")
+		$conexion = mysqli_connect("localhost", "root", "", $base) or die("Problemas");
 	}
 
 	function listarAlumnos($base, $query)
 	{
 		$conexion = conectar($base);
-		$registros = mysqli_query($conexion, $query) or die("Problemas")
+		$registros = mysqli_query($conexion, $query) or die("Problemas");
 		while ($reg = mysqli_fetch_array($registros))
 		{
-			echo "<tr>"
+			echo "<tr>";
 			echo "<td>".$reg['codigo']."</td>";
 			echo "<td>".$reg['nombre']."</td>";
 			echo "<td>".$reg['email']."</td>";
-			echo "</tr>"
+			echo "</tr>";
 
 			switch ($reg['codigocurso'])
 			{
@@ -40,7 +40,7 @@
 	function insertar($query, $base)
 	{
 		$conexion = conectar($base);
-		mysqli_query($conexion, $query); or die("Problemas" . mysqli_error($conexion));
+		mysqli_query($conexion, $query) or die("Problemas" . mysqli_error($conexion));
 		mysqli_close($conexion);
 	}
 
