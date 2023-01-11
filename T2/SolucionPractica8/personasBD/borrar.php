@@ -1,8 +1,8 @@
 <?php
     include "funciones.php";
-    $base="test";
+    $base="alumnos";
     $id=$_GET['id'];
-    $query="delete from datos_usuarios where id='$id'";
+    $query="delete from dwes_alumnos where id='$id'";
     borrarUsuario($query,$base);
     header("Location:index.php");
 ?>
