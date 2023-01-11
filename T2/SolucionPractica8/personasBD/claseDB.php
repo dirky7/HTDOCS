@@ -20,7 +20,7 @@
 				$conexion=new PDO(DSN, USUARIO, PASSWORD);
 				$conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 				$sentencia = $conexion->prepare($sql);
-				$sentencia->setFetchMode(PDO::FETCH_ASSOC);
+				$sentencia->setFetchMode(PDO::FETCH_OBJ);
 				$sentencia->execute();
 				$datos = $sentencia->fetchAll();
 			}catch(PDOException $e){
