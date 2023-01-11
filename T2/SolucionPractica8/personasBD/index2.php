@@ -11,7 +11,7 @@
 
 <body>
 	<?php
-	include("funciones.php");
+	include("claseDB.php");
 	//insertar datos
 	if (isset($_POST['cr'])) {
 		if (!empty($_POST['Nom']) && !empty($_POST['Ape'] && !empty($_POST['Dir']))) {
@@ -19,9 +19,9 @@
 			$ape = $_POST['Ape'];
 			$dir = $_POST['Dir'];
 
-			$base = "alumnos";
 			$query = "insert into dwes_alumnos(nombre,apellido,direccion)values('$nom','$ape','$dir')";
-			insertar($query, $base);
+			$db = new ClaseDB();
+			$db->insertar($query);
 			header("Location:index.php");
 		}
 	}
@@ -44,7 +44,7 @@
 				<td class="sin">&nbsp;</td>
 			</tr>
 			<?php
-			while ($reg = $registros->fetch()) {
+				while ($reg = $registros->fetch()) {
 			?>
 
 				<tr>

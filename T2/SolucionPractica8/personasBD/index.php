@@ -77,8 +77,12 @@
 					<td><?php echo $reg['nombre']; ?></td>
 					<td><?php echo $reg['apellido']; ?></td>
 					<td><?php echo $reg['direccion']; ?></td>
-					<td class="bot"><a href="" onclick="preguntar(<?php echo $reg['id']; ?>)"><input type='button' name='del' id='del' value='Borrar'></a></td>
-					<!--<td class="bot"><a href="borrar.php?id=<?php echo $reg['id']; ?>"><input type='button' name='del' id='del' value='Borrar'></a></td>-->
+					<td class="bot">
+						<a href="" onclick="preguntar(<?php echo $reg['id']; ?>)">
+							<input type='button' name='del' id='del' value='Borrar'>
+						</a>
+					</td>
+					<td class="bot"><a href="borrar.php?id=<?php echo $reg['id']; ?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
 					<td class='bot'><a href="editar.php?id=<?php echo $reg['id']; ?>&nom=<?php echo $reg['nombre']; ?>&apel=<?php echo $reg['apellido']; ?>&dir=<?php echo $reg['direccion']; ?>">
 							<input type='button' name='up' id='up' value='Actualizar'></a></td>
 				</tr>
