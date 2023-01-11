@@ -7,7 +7,7 @@
     $data=$_SESSION['datos'];
     $id=$_GET['delete_id'];
     unset($data[$id]);
-    //$data=array_values($data);
+    $data=array_values($data);
     $_SESSION['datos']=$data;
     header("location:index.php");
     

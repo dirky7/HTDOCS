@@ -9,7 +9,7 @@
 
 <body>
 	<?php
-	include("funciones.php");
+	include("claseDB.php");
 	if (!isset($_POST['bot_actualizar'])) {
 		$id = $_GET['id'];
 		$nom = $_GET['nom'];

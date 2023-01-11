@@ -44,7 +44,7 @@
 				<td class="sin">&nbsp;</td>
 			</tr>
 			<?php
-				while ($reg = $registros->fetch()) {
+				foreach ($registros as $reg) {
 			?>
 
 				<tr>
